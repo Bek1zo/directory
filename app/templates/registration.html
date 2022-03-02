@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Registration form</h1>
+<form action="POST" action="/">
+    {{ form.csrf_token }}
+    {{ form.email.label }} {{ form.email(size=32)}} <br>
+    {{ form.password.label }} {{ form.password(size=64) }} <br>
+    {{ form.password2.label }} {{ form.password2(size=64) }} <br>
+    {{ form.submit() }}
+</form>
+<a href="/login">Уже зарегистрированы? Войдите здесь!</a><br>
+<a href="/register">Забыли пароль? Нажмите здесь!</a>
+{% endblock %}

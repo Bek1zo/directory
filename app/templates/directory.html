@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Справочник:</h1><br>
+
+<h3>Округа</h3><br>
+{% for i in district %}
+{{ i }} <br>
+{% endfor %}
+
+<h3>Регионы</h3><br>
+{% for i in region %}
+{{ i }} <br>
+{% endfor %}
+
+<h3>Города</h3><br>
+{% for i in city %}
+{{ i }} <br>
+{% endfor %}
+
+{% endblock %}

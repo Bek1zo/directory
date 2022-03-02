@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% if title %}
+    <title>Site - {{ title }}</title>
+    {% else %}
+    <title>Site</title>
+    {% endif %}
+</head>
+<body>
+
+<ul>
+    <li><a href="/">Главная</a></li>
+    <li><a href="/info">Информация</a></li>
+    <li><a href="/directory">Справочник</a></li>
+    <li><a href="/registration">Регистрация</a></li>
+    <li><a href="/login">Вход</a></li>
+</ul>
+
+<hr>
+
+{% block content %}
+
+{% endblock %}
+
+<hr>
+Copyright 2022 (C) Pavel Kashcheev
+
+</body>
+</html>
