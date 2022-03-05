@@ -1,33 +1,66 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% if title %}
-    <title>Site - {{ title }}</title>
-    {% else %}
-    <title>Site</title>
-    {% endif %}
-</head>
-<body>
+{% extends 'bootstrap/base.html' %}
 
-<ul>
-    <li><a href="/">Главная</a></li>
-    <li><a href="/info">Информация</a></li>
-    <li><a href="/directory">Справочник</a></li>
-    <li><a href="/registration">Регистрация</a></li>
-    <li><a href="/login">Вход</a></li>
-</ul>
+{% block title %}
+{% if title %}{{ title }} - Site{% else %}Welcome to site{% endif %}
+{% endblock %}
+
+{% block navbar %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="#">Home <span class="sr-only">(current)</span></a>
+            <a class="nav-item nav-link" href="#">Features</a>
+            <a class="nav-item nav-link" href="#">Pricing</a>
+            <a class="nav-item nav-link disabled" href="#">Disabled</a>
+        </div>
+    </div>
+</nav>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Best Directory</a>
+    <div class="collapse navbar-collapse" id="navbarNav"></div>
+        <ul class="navbar-nav"></ul>
+            <li class="nav-item active">
+                <a class="nav-link" href="/">Главная</a>
+            </li>
+            <a href="/info">Информация</a>
+            <a href="/directory">Справочник</a>
+            {% if current_user.is_authenticated %}
+            {% if current_user.status == 'Администратор' %}
+            <a href="/add_article">Добавить новость</a>
+            {% endif %}
+            <a href="/logout">Выход</a>
+            <p>Привет, {{ current_user.username }}! Статус: {{ current_user.status }}</p>
+            {% else %}
+            <a href="/registration">Регистрация</a>
+            <a href="/login">Вход</a>
+            {% endif %}
+        </ul>
+    </div>
+</nav>
+{% endblock %}
 
 <hr>
 
 {% block content %}
+<div class="container">
+    {% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-info" role="alert">{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    {% block app_content %}
 
+    {% endblock %}
+</div>
 {% endblock %}
 
 <hr>
 Copyright 2022 (C) Pavel Kashcheev
-
-</body>
-</html>

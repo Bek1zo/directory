@@ -3,7 +3,7 @@
 
 {% block content %}
 <h1>Login form</h1>
-<form action="POST" action="/">
+<form action="" method="POST">
     {{ form.csrf_token }}
     {{ form.email.label }} {{ form.email(size=32)}} <br>
     {{ form.password.label }} {{ form.password(size=64) }} <br>

@@ -14,7 +14,7 @@ INSERT INTO `geo_district` (`id`, `name`) VALUES
 (8, 'Приволжский федеральный округ'),
 (9, 'Северо-Кавказский федеральный округ');
 
-CREATE TABLE IF NOT EXISTS `geo_regions` (
+CREATE TABLE IF NOT EXISTS `geo_region` (
   `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT,
   `district_id` int(11) UNSIGNED NOT NULL DEFAULT '0',
   `name` varchar(255) NOT NULL,
@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `geo_regions` (
 ) ENGINE=MyISAM AUTO_INCREMENT=88 DEFAULT CHARSET=utf8 COMMENT='Регионы';
  
  
-INSERT INTO `geo_regions` (`id`, `district_id`, `name`) VALUES
+INSERT INTO `geo_region` (`id`, `district_id`, `name`) VALUES
 (2, 3, 'Адыгея'),
 (3, 6, 'Алтай'),
 (4, 6, 'Алтайский край'),

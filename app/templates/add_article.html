@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Добавление новости</h1>
+<form action="" method="POST">
+    {{ form.csrf_token }}
+    {{ form.title.label }} {{ form.title(size=64)}} <br>
+    {{ form.text.label }} {{ form.text(size=1024) }} <br>
+    {{ form.submit() }}
+</form>
+{% endblock %}
