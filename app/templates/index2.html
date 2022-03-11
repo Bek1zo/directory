@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+{% for i in posts %}
+<h1>{{ i.title }}</h1>
+<p>{{ i.text }}</p>
+<h3>Автор: {{ i.author.username }}, {{ i.date }}</h3>
+{% endfor %}
+{% endblock %}
